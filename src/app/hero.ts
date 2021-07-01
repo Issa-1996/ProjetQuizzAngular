@@ -1,4 +1,9 @@
 export interface Hero {
     id: number;
-    name: string;
+    nom: string;
+    prenom: string;
+    login: string;
+    password: string;
+    score: number;
+    question: number[]
 }

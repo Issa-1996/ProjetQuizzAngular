@@ -1,4 +1,17 @@
 /* DashboardComponent's private CSS styles */
+.pagination{
+  width: 20%;
+  padding: 10px;
+  display:inline-block;
+  float: right;
+  margin-top: 10%;
+  font-size: 20px;
+}
+.question{
+  width: 1.1em;
+  height: 1.1em;
+  margin-right: 2%;
+}
 [class*='col-'] {
     float: left;
     padding-right: 20px;

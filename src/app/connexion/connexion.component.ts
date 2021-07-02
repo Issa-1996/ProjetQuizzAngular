@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Hero } from '../hero';
+import { HeroService } from '../hero.service';
 
 @Component({
   selector: 'app-connexion',
@@ -14,10 +16,11 @@ export class ConnexionComponent implements OnInit {
   erreurLogin = '';
   erreurPassword = '';
   erreur = '';
-  constructor(private formBuilder: FormBuilder, private router: Router) { }
+  constructor(private formBuilder: FormBuilder, private router: Router, private herosService: HeroService) { }
   hide = true;
   sending = false;
   btnText = 'Connexion';
+
 
   ngOnInit(): void {
     this.addForm = this.formBuilder.group({
@@ -46,6 +49,20 @@ export class ConnexionComponent implements OnInit {
       }
       this.sending = true;
       this.btnText = 'Patientez...';
+      this.herosService.getHeroes().subscribe(
+        (data:Hero[]) => {
+          //console.log(data);
+          const users=data.find(
+            user=>(user.login==this.addForm.get('login').value) && (user.password==this.addForm.get('password').value)
+          )
+          if(users){
+            this.router.navigate(['/dashboard']);
+          }else{
+            this.erreur = 'Erreur. Veillez resseyer svp.';
+          }
+          
+        });
+
       /*this.authService.isLogin(this.addForm.get('login').value, this.addForm.get('password').value).subscribe(
         (data: any) => {
         //  console.log(data);

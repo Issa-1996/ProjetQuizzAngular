@@ -1,3 +1,44 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Navbar</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+  
+      <div class="collapse navbar-collapse" id="navbarColor01">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a class="nav-link active" href="#">Home
+              <span class="visually-hidden">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Features</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Pricing</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">About</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <a class="dropdown-item" href="#">Something else here</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Separated link</a>
+            </div>
+          </li>
+        </ul>
+        <form class="d-flex">
+          <input class="form-control me-sm-2" type="text" placeholder="Search">
+          <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+  </nav>
 <h3>Les top Héros</h3>
 <div class="grid grid-pad">
     <a *ngFor="let hero of heroes" class="col-1-4" routerLink="/heroes/{{hero.id}}">
@@ -5,4 +46,30 @@
             <h4>{{hero.nom}}</h4>
         </div>
     </a>
+</div>
+<div class="container" style="background-color: dodgerblue; margin-top: 8%; height: 650px; box-shadow: 0px 0px 20px 0px rebeccapurple;">
+    <h1 class="text-center" style="color: white;">Question:1/10</h1>
+    <div class="center" style="background-color: aliceblue; height: 580px; padding: 2%;">
+        
+      <h1 style="margin-top: 1%;">
+        <i>Qui est lamine dabo</i>
+      </h1>
+      <div style="margin-top: 2%; font-size: 30px;">
+        <i style="text-align: center; margin-left: 10%;"> 
+          <input type="radio" name="question" id="question1" class="question"> <label for="question1">Un Voleur ?</label>
+        </i><br>
+        <i style="text-align: center; margin-left: 10%;"> 
+          <input type="radio" name="question" id="question2" class="question"> <label for="question2">Un Voleur ?</label>
+        </i><br>
+        <i style="text-align: center; margin-left: 10%;"> 
+          <input type="radio" name="question" id="question3" class="question"> <label for="question3">Un Voleur ?</label>
+        </i><br>
+        <i style="text-align: center; margin-left: 10%;"> 
+          <input type="radio" name="question" id="question4" class="question"> <label for="question4">Un Voleur ?</label>
+        </i><br>
+      </div>
+        <button class="btn pagination" style="float: right; background-color: antiquewhite;" (click)="listeAdmin(pageCurrent + 1)" [disabled]="(pageCurrent==totalPage)">Suivant</button>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+        <button class="btn pagination" style="float: left; background-color: blueviolet;" (click)="listeAdmin(pageCurrent - 1)" [disabled]="(pageCurrent==1)">Precedent</button>
+        <!--!-->
+  </div>
 </div>

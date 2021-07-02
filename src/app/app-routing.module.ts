@@ -8,8 +8,8 @@ import { ConnexionComponent } from './connexion/connexion.component';
 const routes: Routes = [
   {path: '', redirectTo: 'login', pathMatch: 'full'},
   {path: 'login', component: ConnexionComponent },
-  { path: 'heroes', component: HeroesComponent },
   { path: 'dashboard', component: DashboardComponent},
+  { path: 'heroes', component: HeroesComponent },
   { path: '', redirectTo: '/dashboard', pathMatch: 'full'},
   { path: 'heroes/:id', component: HeroDetailComponent}
 ];

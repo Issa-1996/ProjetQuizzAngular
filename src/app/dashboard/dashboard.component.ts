@@ -10,6 +10,9 @@ import { HeroService } from '../hero.service';
 export class DashboardComponent implements OnInit {
 
   heroes: Hero[] = [];
+  pageCurrent = 1;
+  totalPage = 1;
+  listAdmin: any[];
 
   constructor(private heroService: HeroService) { }
 
@@ -20,6 +23,20 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.getHeroes();
+    this.listeAdmin(this.pageCurrent);
   }
 
+  listeAdmin(page: number): any{
+    this.pageCurrent = page;
+    return this.heroService.getHeroes()
+      .subscribe(
+        data => {
+          console.log(data);
+          this.listAdmin = data;
+          /*const totalPage = data['hydra:totalItems'] / 5;
+          this.totalPage = (Math.ceil(totalPage));
+          console.log(this.listAdmin);*/          
+        }
+      );
+  }
 }

@@ -48,28 +48,21 @@
     </a>
 </div>
 <div class="container" style="background-color: dodgerblue; margin-top: 8%; height: 650px; box-shadow: 0px 0px 20px 0px rebeccapurple;">
-    <h1 class="text-center" style="color: white;">Question:1/10</h1>
+    <h1 class="text-center" style="color: white;">Question:{{questionCurrent.id}}/{{questions.length}}</h1>
     <div class="center" style="background-color: aliceblue; height: 580px; padding: 2%;">
         
-      <h1 style="margin-top: 1%;">
-        <i>Qui est lamine dabo</i>
-      </h1>
-      <div style="margin-top: 2%; font-size: 30px;">
-        <i style="text-align: center; margin-left: 10%;"> 
-          <input type="radio" name="question" id="question1" class="question"> <label for="question1">Un Voleur ?</label>
-        </i><br>
-        <i style="text-align: center; margin-left: 10%;"> 
-          <input type="radio" name="question" id="question2" class="question"> <label for="question2">Un Voleur ?</label>
-        </i><br>
-        <i style="text-align: center; margin-left: 10%;"> 
-          <input type="radio" name="question" id="question3" class="question"> <label for="question3">Un Voleur ?</label>
-        </i><br>
-        <i style="text-align: center; margin-left: 10%;"> 
-          <input type="radio" name="question" id="question4" class="question"> <label for="question4">Un Voleur ?</label>
+      <div style="margin-top: 1%;">
+        <h1>{{questionCurrent.titre}}</h1>
+      </div>
+      <div style="margin-top: 2%; font-size: 30px;" >
+        <i style="text-align: center; margin-left: 10%;" *ngFor="let reponse of questionCurrent.reponse"> 
+          <input *ngIf="questionCurrent.type=='radio'" type="{{questionCurrent.type}}" name="question" id="question+{{reponse.id}}" class="question">
+          <input *ngIf="questionCurrent.type=='checkbox'" type="{{questionCurrent.type}}" name="question+{{reponse.id}}" id="question+{{reponse.id}}" class="question">
+          <label for="question+{{reponse.id}}">{{reponse.titre}}</label> <br>
         </i><br>
       </div>
-        <button class="btn pagination" style="float: right; background-color: antiquewhite;" (click)="listeAdmin(pageCurrent + 1)" [disabled]="(pageCurrent==totalPage)">Suivant</button>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
-        <button class="btn pagination" style="float: left; background-color: blueviolet;" (click)="listeAdmin(pageCurrent - 1)" [disabled]="(pageCurrent==1)">Precedent</button>
-        <!--!-->
-  </div>
+    </div>
+    <button class="btn pagination" style="float: right; background-color: antiquewhite;" (click)="suivant(pageCurrent)" [disabled]="(questions.length==pageCurrent)" *ngIf="questions.length!=pageCurrent">Suivant</button>
+    <button class="btn pagination" style="float: right; background-color: antiquewhite;" (click)="suivant(pageCurrent)" [disabled]="(questions.length==pageCurrent)" *ngIf="questions.length==pageCurrent">Terminer</button>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+    <button class="btn pagination" style="float: left; background-color: blueviolet;" (click)="precedent(pageCurrent)" [disabled]="(pageCurrent==1)">Precedent</button>
 </div>

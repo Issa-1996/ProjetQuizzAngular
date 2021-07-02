@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Hero } from '../hero';
 import { HeroService } from '../hero.service';
+import { Question } from '../question';
+import { QuestionService } from '../question.service';
+import { QUESTIONS } from '../mock-question';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,11 +13,14 @@ import { HeroService } from '../hero.service';
 export class DashboardComponent implements OnInit {
 
   heroes: Hero[] = [];
-  pageCurrent = 1;
-  totalPage = 1;
+  pageCurrent = 0;
+  questionCurrent:Question;
   listAdmin: any[];
+  questions:Question[];
 
-  constructor(private heroService: HeroService) { }
+  constructor(private heroService: HeroService, private questionService: QuestionService,) {
+    this.questions=QUESTIONS
+   }
 
   getHeroes(): void {
     this.heroService.getHeroes()
@@ -23,20 +29,19 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.getHeroes();
-    this.listeAdmin(this.pageCurrent);
+    this.suivant();
+    //this.precedent(this.pageCurrent);
+    
   }
 
-  listeAdmin(page: number): any{
-    this.pageCurrent = page;
-    return this.heroService.getHeroes()
-      .subscribe(
-        data => {
-          console.log(data);
-          this.listAdmin = data;
-          /*const totalPage = data['hydra:totalItems'] / 5;
-          this.totalPage = (Math.ceil(totalPage));
-          console.log(this.listAdmin);*/          
-        }
-      );
+  suivant(currentQuest=0){
+    this.questionCurrent=this.questionService.jouer(this.pageCurrent);
+    console.log(this.questionCurrent);
+    this.pageCurrent++;
+  }
+  precedent(currentQuest=0){
+    this.pageCurrent--;
+    this.questionCurrent=this.questionService.jouer(this.pageCurrent-1);
+    console.log(this.questionCurrent);
   }
 }

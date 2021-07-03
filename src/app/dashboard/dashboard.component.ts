@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Hero } from '../hero';
 import { HeroService } from '../hero.service';
-import { Question } from '../question';
+import { Question, Reponse } from '../question';
 import { QuestionService } from '../question.service';
 import { QUESTIONS } from '../mock-question';
 
@@ -17,6 +17,7 @@ export class DashboardComponent implements OnInit {
   questionCurrent:Question;
   listAdmin: any[];
   questions:Question[];
+  nbrPoint = 0;
 
   constructor(private heroService: HeroService, private questionService: QuestionService,) {
     this.questions=QUESTIONS
@@ -29,19 +30,65 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.getHeroes();
-    this.suivant();
-    //this.precedent(this.pageCurrent);
-    
+    this.suivant();    
+  }
+
+  jouer(current=0): Question{
+    return this.questions[current]
   }
 
   suivant(currentQuest=0){
     this.questionCurrent=this.questionService.jouer(this.pageCurrent);
-    console.log(this.questionCurrent);
     this.pageCurrent++;
   }
   precedent(currentQuest=0){
     this.pageCurrent--;
-    this.questionCurrent=this.questionService.jouer(this.pageCurrent-1);
-    console.log(this.questionCurrent);
+    this.questionCurrent=this.jouer(this.pageCurrent-1);
+  }
+
+  check(qstId: number, reponse: Reponse){
+    
+    const quest = this.questions.find(
+      (qst: Question) => qst.id==qstId
+    )
+
+    if(quest){
+      quest.reponse.find(
+        (rep: Reponse) => {
+          if(rep.id==reponse.id){
+            if (quest.type=='radio') {
+              quest.reponse.forEach(
+                (rep) => rep.checked=false
+              )
+            }
+            reponse.checked=!reponse.checked
+          }
+        }
+      )
+    }
+  }
+
+  terminer(){
+    var badResp: Question[] = []
+    var trouve = true
+    this.questions.forEach(
+      (quest: Question)=>{
+        quest.reponse.forEach(
+          (rep)=>{
+            if (!rep.checked && rep.valeur==true) {
+              trouve = false
+            }
+          }
+        )
+        if (trouve==true) {
+          this.nbrPoint+=quest.point
+        }
+        else{
+          badResp.push(quest)
+        }
+      }
+    )
+    console.log(this.nbrPoint);
+    // this.questions=badResp
   }
 }

@@ -18,6 +18,7 @@ export class DashboardComponent implements OnInit {
   listAdmin: any[];
   questions:Question[];
   nbrPoint = 0;
+  qstTrouvee=0
 
   constructor(private heroService: HeroService, private questionService: QuestionService,) {
     this.questions=QUESTIONS
@@ -68,31 +69,27 @@ export class DashboardComponent implements OnInit {
     }
   }
 
-  terminer(){
-    var badResp: Question[] = []
-    var trouve = true
+  async terminer(){
     this.questions.forEach(
       (quest: Question)=>{
         quest.reponse.forEach(
           (rep)=>{
-            if (!(rep.checked) && (rep.valeur==true)) {
-              trouve = false
+              if ((rep.checked==true) && (rep.valeur==true)) {
+              this.nbrPoint=this.nbrPoint+quest.point
+              this.qstTrouvee+=1
+              this.questions.splice(this.questions.indexOf(quest), 1)
             }
           }
         )
-        if (trouve==true) {
-          this.nbrPoint=this.nbrPoint+quest.point
-        }
-        else{
-          badResp.push(quest)
-          trouve = true
-        }
       }
     )
-    console.log(this.nbrPoint);
-    this.questions=badResp
-    console.log(this.questions);
     this.pageCurrent=0
-    this.suivant();
+    if (this.questions.length!=0) {
+      this.suivant()
+    }
   }
+
+  reloadCurrentPage() {
+    window.location.reload();
+   }
 }

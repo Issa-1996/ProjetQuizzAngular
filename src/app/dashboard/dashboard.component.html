@@ -48,7 +48,7 @@
     </a>
 </div>
 <div class="container" style="background-color: dodgerblue; margin-top: 8%; height: 650px; box-shadow: 0px 0px 20px 0px black;">
-    <h1 class="text-center" style="color: white;">Question:{{questions.indexOf(questionCurrent)+1}}/{{questions.length}}</h1>
+    <h1 class="text-center" style="color: white;">Question:{{pageCurrent}}/{{questions.length}}</h1>
     <div class="center" style="background-color: aliceblue; height: 600px; padding: 2%; margin: -1.3%; margin-top: 0.5%;">
         
       <div style="margin-top: 1%;">
@@ -67,24 +67,23 @@
     </div>
     <button class="btn pagination" style="float: right; background-color: white;box-shadow: 0px 0px 20px 0px black;" (click)="suivant(pageCurrent)" [disabled]="(questions.length==pageCurrent)" *ngIf="questions.length!=pageCurrent">Suivant</button>
     <button class="btn pagination" style="float: right; background-color: antiquewhite;" (click)="terminer()" *ngIf="questions.length==pageCurrent" data-toggle="modal" data-target="#exampleModal">Terminer</button>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
-    <button class="btn pagination" style="float: left; background-color: white;box-shadow: 0px 0px 20px 0px black;" (click)="precedent(pageCurrent)" [disabled]="(pageCurrent==1)">Precedent</button>
+    <button class="btn pagination" style="float: left; background-color: white;box-shadow: 0px 0px 20px 0px black;" (click)="precedent(pageCurrent)" [disabled]="(pageCurrent==1)||questions.length==0">Precedent</button>
 </div>
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Resumer des vos reponses</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Resumé des vos réponses</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed illum, cupiditate hic assumenda quis veritatis vitae numquam atque, libero eaque unde quia repellat dolorum id ab molestias doloribus minus ad.
-      i similique distinctio voluptatum voluptate, nulla eaque rem cumque odio molestias laborum odit esse facilis. Quibusdam eaque magni saepe laboriosam aut.
+        <h3>Vous avez trouvé {{qstTrouvee}} question(s) soit {{nbrPoint}} Point(s)</h3>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button [disabled]="(questions.length==0)" type="button" class="btn btn-secondary" data-dismiss="modal">Continuer</button>
+        <button (click)="reloadCurrentPage()" type="button" class="btn btn-primary">Rejouer tout</button>
       </div>
     </div>
   </div>

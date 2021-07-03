@@ -3,28 +3,28 @@ import { Question, Reponse } from './question';
 export const QUESTIONS: Question[] = [
     {
         id: 1,
-        titre: 'Dans laquelle de ces propositions l’invention n\'est-elle pas bien attribuée à son inventeur ?',
+        titre: ' Qui a inventé la machine à vapeur ?',
         type: 'radio',
         point: 20,
         reponse: [
             {
                 id: 1,
-                titre: 'La machine à vapeur de James Watt',
-                valeur: true
+                titre: 'Isaac Newton',
+                valeur: false
             },
             {
                 id: 2,
-                titre: 'Le Téléphone d\'Alexander Bell',
+                titre: 'Galileo Galilei.',
                 valeur: false
             },
             {
                 id: 3,
-                titre: 'Le phonographe de Thomas Edison',
-                valeur: false
+                titre: 'James Watt.',
+                valeur: true
             },
             {
                 id: 4,
-                titre: 'La montre de Leon Foucault',
+                titre: 'Christophe Colomb',
                 valeur: false
             }
         ]
@@ -66,12 +66,12 @@ export const QUESTIONS: Question[] = [
             {
                 id: 1,
                 titre: 'Courant éléctrique.',
-                valeur: true
+                valeur: false
             },
             {
                 id: 2,
                 titre: 'Tension éléctrique.',
-                valeur: false
+                valeur: true
             },
             {
                 id: 3,
@@ -89,12 +89,12 @@ export const QUESTIONS: Question[] = [
         id: 4,
         titre: 'Laquelle des espèces animales suivantes n’appartient pas à la classe des vertébrés ?',
         type: 'radio',
-        point: 30,
+        point: 35,
         reponse: [
             {
                 id: 1,
-                titre: 'Les batraciens.',
-                valeur: true
+                titre: 'les poissons.',
+                valeur: false
             },
             {
                 id: 2,
@@ -104,7 +104,7 @@ export const QUESTIONS: Question[] = [
             {
                 id: 3,
                 titre: 'Les crustacés.',
-                valeur: false
+                valeur: true
             },
             {
                 id: 4,
@@ -115,28 +115,28 @@ export const QUESTIONS: Question[] = [
     },
     {
         id: 5,
-        titre: 'Le BCG est un vaccin contre :',
+        titre: 'Quel est la forma factorisé de: (a-b)(a+b)?',
         type: 'radio',
-        point: 30,
+        point: 10,
         reponse: [
             {
                 id: 1,
-                titre: 'Le tétanos.',
-                valeur: true
-            },
-            {
-                id: 2,
-                titre: 'La grippe.',
+                titre: '(a^2 +b^2)^2.',
                 valeur: false
             },
             {
+                id: 2,
+                titre: '(a-b)^2.',
+                valeur: true
+            },
+            {
                 id: 3,
-                titre: 'La rage.',
+                titre: '(a+b)^2.',
                 valeur: false
             },
             {
                 id: 4,
-                titre: 'La tuberculose',
+                titre: 'a^2 +2ab - b^2.',
                 valeur: false
             }
         ]
@@ -166,11 +166,6 @@ export const QUESTIONS: Question[] = [
                 id: 4,
                 titre: 'O-',
                 valeur: true
-            },
-            {
-                id: 5,
-                titre: 'AB+',
-                valeur: false
             }
         ]
     },
@@ -178,12 +173,12 @@ export const QUESTIONS: Question[] = [
         id: 7,
         titre: 'Quels sont les unités d\'énergie :',
         type: 'checkbox',
-        point: 30,
+        point: 15,
         reponse: [
             {
                 id: 1,
                 titre: 'Watt.',
-                valeur: true
+                valeur: false
             },
             {
                 id: 2,
@@ -193,7 +188,7 @@ export const QUESTIONS: Question[] = [
             {
                 id: 3,
                 titre: 'Joule.',
-                valeur: false
+                valeur: true
             },
             {
                 id: 4,
@@ -206,7 +201,7 @@ export const QUESTIONS: Question[] = [
         id: 8,
         titre: 'Lesquelles de ces énergies ne sont pas renouvelables ?',
         type: 'checkbox',
-        point: 30,
+        point: 20,
         reponse: [
             {
                 id: 1,
@@ -234,12 +229,12 @@ export const QUESTIONS: Question[] = [
         id: 9,
         titre: 'Qui a dit "rien ne se perd, rien ne se crée, tout se transforme" ?',
         type: 'radio',
-        point: 30,
+        point: 10,
         reponse: [
             {
                 id: 1,
                 titre: 'Newton.',
-                valeur: true
+                valeur: false
             },
             {
                 id: 2,
@@ -249,7 +244,7 @@ export const QUESTIONS: Question[] = [
             {
                 id: 3,
                 titre: 'Lavoisier.',
-                valeur: false
+                valeur: true
             },
             {
                 id: 4,
@@ -260,29 +255,29 @@ export const QUESTIONS: Question[] = [
     },
     {
         id: 10,
-        titre: 'Comment appelle-t-on l\'énergie liée au mouvement ?',
+        titre: 'Comment appelle-t-on un triangle Aiguille  qui a quatre cotés ?',
         type: 'checkbox',
         point: 30,
         reponse: [
             {
                 id: 1,
-                titre: 'Energie chimique.',
-                valeur: true
+                titre: 'Triangle équivoque.',
+                valeur: false
             },
             {
                 id: 2,
-                titre: 'Energie thermique.',
+                titre: 'Triangle isocèle.',
                 valeur: false
             },
             {
                 id: 3,
-                titre: 'Energie solaire.',
+                titre: 'Triangle équilatéral.',
                 valeur: false
             },
             {
                 id: 4,
-                titre: 'Energie cinétique',
-                valeur: false
+                titre: 'Aucune des reponses',
+                valeur: true
             }
         ]
     }

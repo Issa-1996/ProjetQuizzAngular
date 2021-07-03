@@ -25,7 +25,7 @@ export class DashboardComponent implements OnInit {
 
   getHeroes(): void {
     this.heroService.getHeroes()
-      .subscribe(heroes => this.heroes = heroes.slice(1,5))
+      .subscribe(heroes => this.heroes = heroes.slice(1,5));      
   }
 
   ngOnInit(): void {
@@ -75,7 +75,7 @@ export class DashboardComponent implements OnInit {
       (quest: Question)=>{
         quest.reponse.forEach(
           (rep)=>{
-            if (!rep.checked && rep.valeur==true) {
+            if ((!rep.checked) && (rep.valeur==true)) {
               trouve = false
             }
           }

@@ -75,20 +75,24 @@ export class DashboardComponent implements OnInit {
       (quest: Question)=>{
         quest.reponse.forEach(
           (rep)=>{
-            if ((!rep.checked) && (rep.valeur==true)) {
+            if (!(rep.checked) && (rep.valeur==true)) {
               trouve = false
             }
           }
         )
         if (trouve==true) {
-          this.nbrPoint+=quest.point
+          this.nbrPoint=this.nbrPoint+quest.point
         }
         else{
           badResp.push(quest)
+          trouve = true
         }
       }
     )
     console.log(this.nbrPoint);
-    // this.questions=badResp
+    this.questions=badResp
+    console.log(this.questions);
+    this.pageCurrent=0
+    this.suivant();
   }
 }

@@ -69,12 +69,12 @@ export class DashboardComponent implements OnInit {
     }
   }
 
-  async terminer(){
+  terminer(){
     this.questions.forEach(
       (quest: Question)=>{
         quest.reponse.forEach(
           (rep)=>{
-              if ((rep.checked==true) && (rep.valeur==true)) {
+              if ((rep.checked || rep.checked==true) && (rep.valeur==true)) {
               this.nbrPoint=this.nbrPoint+quest.point
               this.qstTrouvee+=1
               this.questions.splice(this.questions.indexOf(quest), 1)

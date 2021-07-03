@@ -45,12 +45,7 @@
                   </a>
                   
                 </div>
-                <div class="marquee">
-                  
-                  <marquee direction="up" style="text-align: center;">Message fort du Directeur <p> <br> <p>" Je ne suis pas venu en soliste muni d'une baguette magique avec la prétention d'apporter des solutions toutes faites. <br> <br></p> <p>Dans les meilleurs delais, je compte engager de larges concertations avec l'ensemble des acteurs notamment <br> <br></p> <p>les amicales et associations représentatives d'étudiants, des syndicats de travailleurs et l'ensemble des acteurs de l'espace universitaire pour examiner <br> <br></p> <p>les préoccupations majeures dans une demarche affranchie de toute forme de subjectivité. " <br></p> <p><b><h1>Monsieur Maguette SENE</h1></b></p></marquee><br>
-  
-  
-                </div>
+                
                 
           </div>
           <div class="col-md-6" style="background-color: blueviolet; height: 600px;" id="login">
@@ -75,7 +70,7 @@
                     <span style="color: orange; font-size: 20px;" *ngIf="erreurPassword!=''"> {{ erreurPassword }}</span>
                   </div>
 
-                  <button type="button" class="btn btn-success btn-lg btn-block" [disabled]="sending" (click)="onSignIn()" routerLink="/dashboard">{{btnText}}</button>
+                  <button type="button" class="btn btn-success btn-lg btn-block" [disabled]="sending" (click)="onSignIn()"  >{{btnText}}</button>
                   
                   <div class="inf" style="text-align: center; margin-top: 1%;">
                     <span class="col-md-5"><a routerActive="active" class="nav-link"  style="text-align: center; font-size: 16px; color: white;">Mot de passe oublié? </a></span>

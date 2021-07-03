@@ -5,6 +5,23 @@
   display:inline-block;
   margin-top: -10%;
   font-size: 20px;
+  box-shadow: 0 0 20px 0 white;
+  color: white;
+  border-radius: 10px;
+}
+.point{
+  position: absolute;
+  left: 75%;
+  top: 42%;
+  background-color: dodgerblue;
+  color: white;
+  width: 8%;
+  height: 6%;
+  text-align: center;
+  border-radius: 20px;
+}
+.point h4{
+  margin-top: 10%;
 }
 .question{
   width: 1.1em;
